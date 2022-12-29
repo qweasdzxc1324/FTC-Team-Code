@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.util.Range;
 
 @TeleOp
 public class TeleOP extends LinearOpMode {
-    //Robot robot = new Robot();   // Use Robot's feature
+    Robot robot = new Robot();   // Use Robot's feature
     //double dumperPos = 0;
 
         //robot.init(this.hardwareMap);
@@ -19,43 +19,40 @@ public class TeleOP extends LinearOpMode {
         int rightTarget = (int)(distanceInches * COUNTS_PER_INCH);
         robot.drive(1, leftTarget);
  */
-        public DcMotor IntakeMotor = null;
+        //public DcMotor IntakeMotor = null;
 
     @Override
     public void runOpMode() {
-       // robot.init(this.hardwareMap);
+       robot.init(this.hardwareMap);
 
-        //telemetry.addData("Mode", "waiting");
-        //telemetry.update();
-            IntakeMotor = hardwareMap.get(DcMotor.class, "IntakeMotor");
+        telemetry.addData("Mode", "waiting");
+        telemetry.update();
+          //  IntakeMotor = hardwareMap.get(DcMotor.class, "IntakeMotor");
         waitForStart();
 
 
         while (opModeIsActive()) {
-            IntakeMotor.setPower(gamepad1.left_stick_y);
+           // I`ntakeMotor.setPower(gamepad1.left_stick_y);
         }
-            /*
+
             double drive = -gamepad1.right_stick_y;
             double strafe = -gamepad1.right_stick_x;
             double turn = -gamepad1.left_stick_x * 0.8;
 
 
 
-    /*        if(Math.abs(strafe)<0.2){
-                strafe=0;
-            } */
-/*
-            double FLPower = Range.clip(drive - strafe + turn, -1.0, 1.0);
-            double FRPower = Range.clip(drive + strafe - turn, -1.0, 1.0);
-            double BLPower = Range.clip(drive + strafe + turn, -1.0, 1.0);
-            double BRPower = Range.clip(drive - strafe - turn, -1.0, 1.0);
+           if(Math.abs(strafe)<0.2){
+                strafe = 0;
+                double FLPower = Range.clip(drive - strafe + turn, -1.0, 1.0);
+                double FRPower = Range.clip(drive + strafe - turn, -1.0, 1.0);
+                double BLPower = Range.clip(drive + strafe + turn, -1.0, 1.0);
+                double BRPower = Range.clip(drive - strafe - turn, -1.0, 1.0);
 
-            robot.FrontLeftDrive.setPower(FLPower);
-            robot.FrontRightDrive.setPower(FRPower);
-            robot.RearLeftDrive.setPower(BLPower);
-            robot.RearRightDrive.setPower(BRPower);
-        }
-        */
+                robot.FrontLeftDrive.setPower(FLPower);
+                robot.FrontRightDrive.setPower(FRPower);
+                robot.RearLeftDrive.setPower(BLPower);
+                robot.RearRightDrive.setPower(BRPower);
+           }
     }
 }
 

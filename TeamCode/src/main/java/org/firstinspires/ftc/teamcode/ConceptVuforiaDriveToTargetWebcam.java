@@ -40,7 +40,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
  */
 
 @TeleOp(name="Drive To Target", group = "Concept")
-@Disabled
+//;@Disabled
 public class ConceptVuforiaDriveToTargetWebcam extends LinearOpMode
 {
     // Adjust these numbers to suit your robot.
@@ -66,7 +66,7 @@ public class ConceptVuforiaDriveToTargetWebcam extends LinearOpMode
      * and paste it in to your code on the next line, between the double quotes.
      */
     private static final String VUFORIA_KEY =
-            " --- YOUR NEW VUFORIA KEY GOES HERE  --- ";
+            "AV1Ucyv/////AAABmUl18NGAX0t9jNaAzbRUAGAUyeb0YlTbY5fJOWBQjAEFh82JhTknBnyD7nZa006ijPmbeHVd8oR6rJHV3GTRlBWkgGck8d+aBOdKio9R/8AJg79YGmwnzbDc7k780JD9+9GwDMCnFqvZjCNVyRbzlnKDAoKLyvyCsckgOxIElJzT0y52e0MbzVuqwoCzb9+ZmqeSwquPOLXwxXb8UAXNQ1xf1hcnFNaktwtqx3HPS7kxpgyGCa3nHXNGZveYSKR2KnsIxWnkVEyAIqDEHPMNbqDpm703fvfvQSpNgAR5Qcf8j7dAH39ItxhxmzuPIwVuTghJ+cvrTnDuFxpPCo1jB9+Qw4tMVAmtWw8STYiHCsqU";
 
     VuforiaLocalizer vuforia    = null;
     OpenGLMatrix targetPose     = null;

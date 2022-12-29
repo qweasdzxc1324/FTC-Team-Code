@@ -15,8 +15,7 @@ public class AutoTest extends LinearOpMode {
     //static final double DRIVE_GEAR_REDUCTION = 13.7;
     //static final double WHEEL_DIAMETER_INCHES = 4;
     //static final double COUNTS_PER_INCH = 45.4545455;
-
-    public DcMotor IntakeMotor = null;
+    //public DcMotor IntakeMotor = null;
     ElapsedTime runtime = new ElapsedTime();
     @Override
     public void runOpMode() {
@@ -25,17 +24,19 @@ public class AutoTest extends LinearOpMode {
         waitForStart();
         double distanceInches = 12;
         int leftTarget = (int) (distanceInches * COUNTS_PER_INCH);
-        int rightTarget = (int)(distanceInches * COUNTS_PER_INCH);
+        int rightTarget =i(int)(distanceInches * COUNTS_PER_INCH);
         robot.drive(1, leftTarget);
  */
-        IntakeMotor = hardwareMap.get(DcMotor.class, "IntakeMotor");
+        // IntakeMotor = hardwareMap.get(DcMotor.class, "IntakeMotor");
         waitForStart();
         runtime.reset();
 
         while (opModeIsActive() && runtime.seconds() < 1.0) {
-            IntakeMotor.setPower(1);
+           // IntakeMotor.setPower(1);
         } while (opModeIsActive() && runtime.seconds() < 2.0) {
-            IntakeMotor.setPower(-1);
+            //IntakeMotor.setPower(-1);
+
         }
+
     }
 }
