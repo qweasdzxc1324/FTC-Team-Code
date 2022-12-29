@@ -32,16 +32,14 @@ public class TeleOP extends LinearOpMode {
 
 
         while (opModeIsActive()) {
-           // I`ntakeMotor.setPower(gamepad1.left_stick_y);
-        }
-
+           // IntakeMotor.setPower(gamepad1.left_stick_y);
             double drive = -gamepad1.right_stick_y;
             double strafe = -gamepad1.right_stick_x;
             double turn = -gamepad1.left_stick_x * 0.8;
 
 
 
-           if(Math.abs(strafe)<0.2){
+            if(Math.abs(strafe)<0.2){
                 strafe = 0;
                 double FLPower = Range.clip(drive - strafe + turn, -1.0, 1.0);
                 double FRPower = Range.clip(drive + strafe - turn, -1.0, 1.0);
@@ -52,7 +50,10 @@ public class TeleOP extends LinearOpMode {
                 robot.FrontRightDrive.setPower(FRPower);
                 robot.RearLeftDrive.setPower(BLPower);
                 robot.RearRightDrive.setPower(BRPower);
-           }
+            }
+
+        }
+
     }
 }
 
