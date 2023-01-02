@@ -23,8 +23,10 @@ public class Robot {
     public CRServo TestServo = null;
     public CRServo TestServo2 = null;
     public Servo IntakeServo = null;
+    public Servo ClawServoR = null;
+    public Servo ClawServoL = null;
     public DcMotor CarouselMotor = null;
-    //public DcMotor IntakeMotor = null;
+    public DcMotor IntakeMotor = null;
     public DcMotor ArmMotor = null;
     public Servo DumperServo = null;
     public BNO055IMU imu;
@@ -42,8 +44,10 @@ public class Robot {
         RearRightDrive = hwMap.get(DcMotor.class, "RR_DCmotor");
         TestServo = hwMap.get(CRServo.class,"TestServo");
         TestServo2 = hwMap.get(CRServo.class,"TestServo2");
+        ClawServoR = hwMap.get(Servo.class, "ClawServoR");
+        ClawServoL = hwMap.get(Servo.class, "ClawServoL");
         //CarouselMotor = hwMap.get(DcMotor.class, "CarouselMotor");
-        //IntakeMotor = hwMap.get(DcMotor.class, "IntakeMotor");
+        IntakeMotor = hwMap.get(DcMotor.class, "IntakeMotor");
         //ArmMotor = hwMap.get(DcMotor.class, "ArmMotor");
         //DumperServo = hwMap.get(Servo.class, "DumperServo");
 
@@ -52,7 +56,7 @@ public class Robot {
         RearLeftDrive.setDirection(DcMotor.Direction.REVERSE);
         RearRightDrive.setDirection(DcMotor.Direction.FORWARD);
         //CarouselMotor.setDirection(DcMotor.Direction.REVERSE);
-        //IntakeMotor.setDirection(DcMotor.Direction.REVERSE);
+        IntakeMotor.setDirection(DcMotor.Direction.REVERSE);
         //ArmMotor.setDirection(DcMotor.Direction.FORWARD);
         //DumperServo.setDirection(Servo.Direction.FORWARD);
 
@@ -62,7 +66,7 @@ public class Robot {
         RearRightDrive.setPower(0);
         //CarouselMotor.setPower(0);
         //
-        // IntakeMotor.setPower(0);
+        IntakeMotor.setPower(0);
         //ArmMotor.setPower(0);
         //DumperServo.setPosition(0);
 
@@ -71,7 +75,7 @@ public class Robot {
         RearLeftDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         RearRightDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         //CarouselMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        //IntakeMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        IntakeMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         //ArmMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         FrontLeftDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -79,7 +83,7 @@ public class Robot {
         RearLeftDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         RearRightDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         //CarouselMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        //IntakeMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        IntakeMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         //ArmMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
         FrontLeftDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -87,7 +91,7 @@ public class Robot {
         RearLeftDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         RearRightDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         //CarouselMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        //IntakeMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        IntakeMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         //ArmMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
