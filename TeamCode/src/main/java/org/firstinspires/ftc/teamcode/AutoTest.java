@@ -10,7 +10,6 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 @Autonomous
 public class AutoTest extends LinearOpMode {
 
-    Robot robot = new Robot();
     //static final double COUNTS_PER_MOTOR_REV = 28 ;
     //static final double DRIVE_GEAR_REDUCTION = 13.7;
     //static final double WHEEL_DIAMETER_INCHES = 4;
@@ -18,8 +17,13 @@ public class AutoTest extends LinearOpMode {
     //public DcMotor IntakeMotor = null;
     ElapsedTime runtime = new ElapsedTime();
 
-    @Override
+
     public void runOpMode() throws InterruptedException {
+
+        Robot robot = new Robot();
+        robot.init(this.hardwareMap);
+        waitForStart();
+
         robot.FrontLeftDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         robot.FrontRightDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         robot.RearRightDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);

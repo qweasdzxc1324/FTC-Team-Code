@@ -52,8 +52,8 @@ public class TeleOP extends LinearOpMode {
             }
             telemetry.addData("Current Position:", robot.IntakeMotor.getCurrentPosition());
             telemetry.update();
-            double drive = gamepad1.right_stick_y;
-            double strafe = gamepad1.right_stick_x;
+            double drive = -gamepad1.right_stick_y;
+            double strafe = -gamepad1.right_stick_x;
             double turn = gamepad1.left_stick_x * 0.8;
 
 
