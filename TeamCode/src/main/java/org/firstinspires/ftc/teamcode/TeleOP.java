@@ -34,7 +34,7 @@ public class TeleOP extends LinearOpMode {
 
 
         while (opModeIsActive()) {
-            double slides = gamepad2.left_stick_y;
+            double slides = gamepad2.left_stick_y * 0.75;
             if (robot.IntakeMotor.getCurrentPosition() <= 0) {
                 if (gamepad2.left_stick_y > 0) {
                     robot.IntakeMotor.setPower(slides);
@@ -59,54 +59,56 @@ public class TeleOP extends LinearOpMode {
 
             // if(Math.abs(strafe)<0.2){
                 //strafe = 0;
-                double FLPower = Range.clip(drive - strafe + turn, -1.0, 1.0);
-                double FRPower = Range.clip(drive + strafe - turn, -1.0, 1.0);
-                double BLPower = Range.clip(drive + strafe + turn, -1.0, 1.0);
-                double BRPower = Range.clip(drive - strafe - turn, -1.0, 1.0);
+            double FLPower = Range.clip(drive - strafe + turn, -1.0, 1.0);
+            double FRPower = Range.clip(drive + strafe - turn, -1.0, 1.0);
+            double BLPower = Range.clip(drive + strafe + turn, -1.0, 1.0);
+            double BRPower = Range.clip(drive - strafe - turn, -1.0, 1.0);
 
-                robot.FrontLeftDrive.setPower(FLPower);
-                robot.FrontRightDrive.setPower(FRPower);
-                robot.RearLeftDrive.setPower(BLPower);
-                robot.RearRightDrive.setPower(BRPower);
-                robot.IntakeServo = hardwareMap.get(Servo.class,"IntakeServo");
-            //robot.init(this.hardwareMap);
-                if (gamepad2.a) {
-                    pivotPosition += 0.001;
-                    robot.IntakeServo.setPosition(pivotPosition);
-                } else if (gamepad2.b) {
-                    pivotPosition -= 0.001;
-                    robot.IntakeServo.setPosition(pivotPosition);
-                }
-                if (pivotPosition >= 1) {
-                    pivotPosition = 1;
-                }
-                else if (pivotPosition <= 0) {
-                    pivotPosition = 0;
-                }
-                if (gamepad2.left_bumper) {
-                    robot.ClawServoR.setPosition(.9);
-                    robot.ClawServoL.setPosition(.6);
-                } else if (gamepad2.right_bumper) {
-                    robot.ClawServoL.setPosition(.9);
-                    robot.ClawServoR.setPosition(.6);
-                }
-                if (ClawServoLPosition >= 1) {
-                    ClawServoLPosition = 1;
-                } else if (ClawServoLPosition <= 0) {
-                    ClawServoRPosition = 0;
-                }
-                if (gamepad2.dpad_right) {
-                    ClawServoRPosition += 0.001;
-                    robot.ClawServoR.setPosition(ClawServoRPosition);
-                } else if (gamepad2.dpad_left) {
-                    ClawServoRPosition -= 0.001;
-                    robot.ClawServoR.setPosition(ClawServoRPosition);
-                }
-                if (ClawServoRPosition >= 1) {
-                    ClawServoRPosition = 1;
-                } else if (ClawServoRPosition <= 0) {
-                    ClawServoRPosition = 0;
-                }
+            robot.FrontLeftDrive.setPower(FLPower);
+            robot.FrontRightDrive.setPower(FRPower);
+            robot.RearLeftDrive.setPower(BLPower);
+            robot.RearRightDrive.setPower(BRPower);
+            robot.IntakeServo = hardwareMap.get(Servo.class,"IntakeServo");
+        //robot.init(this.hardwareMap);
+            if (gamepad2.a) {
+                pivotPosition += 0.002;
+                robot.IntakeServo.setPosition(pivotPosition);
+            } else if (gamepad2.b) {
+                pivotPosition -= 0.002;
+                robot.IntakeServo.setPosition(pivotPosition);
+            }
+            if (pivotPosition >= 1) {
+                pivotPosition = 1;
+            }
+            else if (pivotPosition <= 0) {
+                pivotPosition = 0;
+            }
+            if (gamepad2.left_bumper) {
+                robot.ClawServoR.setPosition(.9);
+                robot.ClawServoL.setPosition(.6);
+            } else if (gamepad2.right_bumper) {
+                robot.ClawServoL.setPosition(.9);
+                robot.ClawServoR.setPosition(.6);
+            }
+            /*
+            if (ClawServoLPosition >= 1) {
+                ClawServoLPosition = 1;
+            } else if (ClawServoLPosition <= 0) {
+                ClawServoRPosition = 0;
+            }
+            if (gamepad2.dpad_right) {
+                ClawServoRPosition += 0.001;
+                robot.ClawServoR.setPosition(ClawServoRPosition);
+            } else if (gamepad2.dpad_left) {
+                ClawServoRPosition -= 0.001;
+                robot.ClawServoR.setPosition(ClawServoRPosition);
+            }
+            if (ClawServoRPosition >= 1) {
+                ClawServoRPosition = 1;
+            } else if (ClawServoRPosition <= 0) {
+                ClawServoRPosition = 0;
+            }
+             */
             /*
             if (gamepad1.left_stick_y > 0) {
                 IntakeServoPosition = Double.valueOf(gamepad1.left_stick_y);

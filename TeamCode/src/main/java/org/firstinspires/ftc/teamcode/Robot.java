@@ -53,7 +53,7 @@ public class Robot {
 
         FrontLeftDrive.setDirection(DcMotor.Direction.REVERSE);
         FrontRightDrive.setDirection(DcMotor.Direction.FORWARD);
-        RearLeftDrive.setDirection(DcMotor.Direction.FORWARD);
+        RearLeftDrive.setDirection(DcMotor.Direction.REVERSE);
         RearRightDrive.setDirection(DcMotor.Direction.FORWARD);
         //CarouselMotor.setDirection(DcMotor.Direction.REVERSE);
         IntakeMotor.setDirection(DcMotor.Direction.REVERSE);
