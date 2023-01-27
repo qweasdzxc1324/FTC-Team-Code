@@ -34,27 +34,34 @@ public class TeleOP extends LinearOpMode {
 
 
         while (opModeIsActive()) {
-            double slides = gamepad2.left_stick_y * 0.75;
-            if (robot.IntakeMotor.getCurrentPosition() <= 0) {
-                if (gamepad2.left_stick_y > 0) {
-                    robot.IntakeMotor.setPower(slides);
+            double slides = gamepad2.left_stick_y * 0.7;
+            if (robot.IntakeMotor.getCurrentPosition() <= 1) {
+                if (gamepad2.left_stick_y < 0) {
+                    robot.IntakeMotor.setPower(-slides);
                 } else {
                     robot.IntakeMotor.setPower(0);
                 }
             } else if (robot.IntakeMotor.getCurrentPosition() >= 3200) {
-                if (gamepad2.left_stick_y < 0) {
-                    robot.IntakeMotor.setPower(slides);
+                if (gamepad2.left_stick_y > 0) {
+                    robot.IntakeMotor.setPower(-slides);
                 } else {
                     robot.IntakeMotor.setPower(0);
                 }
             } else {
-                robot.IntakeMotor.setPower(slides);
+                robot.IntakeMotor.setPower(-slides);
             }
-            telemetry.addData("Current Position:", robot.IntakeMotor.getCurrentPosition());
-            telemetry.update();
-            double drive = -gamepad1.right_stick_y;
-            double strafe = -gamepad1.right_stick_x;
-            double turn = gamepad1.left_stick_x * 0.8;
+            //telemetry.addData("Current Position:", robot.IntakeMotor.getCurrentPosition());
+            //telemetry.update();
+            double drive = gamepad1.left_stick_y * 0.6;
+            boolean strafe_L = gamepad1.dpad_left;
+            boolean strafe_R = gamepad1.dpad_right;
+            double strafe = 0;
+            if (strafe_L == true) {
+                strafe = -.6;
+            } else if (strafe_R == true) {
+                strafe = .6;
+            }
+            double turn = gamepad1.right_stick_x * 0.5;
 
 
             // if(Math.abs(strafe)<0.2){
@@ -71,10 +78,10 @@ public class TeleOP extends LinearOpMode {
             robot.IntakeServo = hardwareMap.get(Servo.class,"IntakeServo");
         //robot.init(this.hardwareMap);
             if (gamepad2.a) {
-                pivotPosition += 0.002;
+                pivotPosition += 0.003;
                 robot.IntakeServo.setPosition(pivotPosition);
             } else if (gamepad2.b) {
-                pivotPosition -= 0.002;
+                pivotPosition -= 0.003;
                 robot.IntakeServo.setPosition(pivotPosition);
             }
             if (pivotPosition >= 1) {
@@ -87,36 +94,16 @@ public class TeleOP extends LinearOpMode {
                 robot.ClawServoR.setPosition(.9);
                 robot.ClawServoL.setPosition(.6);
             } else if (gamepad2.right_bumper) {
-                robot.ClawServoL.setPosition(.9);
                 robot.ClawServoR.setPosition(.6);
+                robot.ClawServoL.setPosition(.9);
+
             }
-            /*
+
             if (ClawServoLPosition >= 1) {
                 ClawServoLPosition = 1;
             } else if (ClawServoLPosition <= 0) {
                 ClawServoRPosition = 0;
             }
-            if (gamepad2.dpad_right) {
-                ClawServoRPosition += 0.001;
-                robot.ClawServoR.setPosition(ClawServoRPosition);
-            } else if (gamepad2.dpad_left) {
-                ClawServoRPosition -= 0.001;
-                robot.ClawServoR.setPosition(ClawServoRPosition);
-            }
-            if (ClawServoRPosition >= 1) {
-                ClawServoRPosition = 1;
-            } else if (ClawServoRPosition <= 0) {
-                ClawServoRPosition = 0;
-            }
-             */
-            /*
-            if (gamepad1.left_stick_y > 0) {
-                IntakeServoPosition = Double.valueOf(gamepad1.left_stick_y);
-            }
-            IntakeServo.setPosition(gamepad1.left_stick_y);
-            IntakeServo.setPosition(IntakeServoPosition);
-            //Change to gamepad2 after testing
-            */
-            }
         }
     }
+}

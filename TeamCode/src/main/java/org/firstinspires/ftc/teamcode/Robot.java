@@ -46,6 +46,7 @@ public class Robot {
         TestServo2 = hwMap.get(CRServo.class,"TestServo2");
         ClawServoR = hwMap.get(Servo.class, "ClawServoR");
         ClawServoL = hwMap.get(Servo.class, "ClawServoL");
+        IntakeServo = hwMap.get(Servo.class, "IntakeServo");
         //CarouselMotor = hwMap.get(DcMotor.class, "CarouselMotor");
         IntakeMotor = hwMap.get(DcMotor.class, "IntakeMotor");
         //ArmMotor = hwMap.get(DcMotor.class, "ArmMotor");
